@@ -11,7 +11,7 @@ It allows you to:
 - Manage the security of your application.
 - Have an administration panel already created.
 
-# Instalation/Requirements
+# Installation/Requirements
 This project will be done using the WSL2 Ubuntu-20.04 environment, Python 3.10.9 through a virtual environment.
 
 ```bash
@@ -23,14 +23,57 @@ nivek@YEFF:~/django_basics$ source venv/bin/activate
 Python 3.10.9
 ```
 
-## Django (Instalation)
+## Django (Installation)
 I will use Django 4.1
 ```bash
 (venv) nivek@YEFF:~/django_basics$ pip install django==4.1
 (venv) nivek@YEFF:~/django_basics$ django-admin --version
 4.1
 ```
+# Create your first project with Django!
+In order to start your project you should use the following command:
+```bash 
+(venv) nivek@YEFF:~/django_basics$ django-admin startproject my_project
+```
+Or u can use the dot symbol to avoid the creation of a second folder with the same name of your project.
+```bash
+(venv) nivek@YEFF:~/django_basics$ django-admin startproject my_project .
+```
+Now in the root of your project you will have the following files:
+<p align="center">
 
+|<img src="./utils/readmeImages/explorer_1st_project.webp" width=450>|
+| :---: |
+|_The files shown in the image are the basic files that are created when a new Django project is created._|
+
+</p>
+
+## Launch your project
+
+To start your project we must take into account the file <span style="color:red;">`manage.py`</span>, this file is a script that is used to manage your Django project, this script can be used to create applications, create databases, run tests and much more.<br>
+<br>So let's run the following command:
+
+```bash
+(venv) nivek@YEFF:~/django_basics$ python3 manage.py runserver
+```
+
+<p align="center">
+
+  |<img src="./utils/readmeImages/python_manage_cmd.webp" width=850>|
+  | :---: |
+  |_Let's take a look at the server on which our project is running._|
+  |<img src="./utils/readmeImages/python_manage_cmd_arrow.webp" width=850>|
+  |_Click the link._|
+  |<img src="./utils/readmeImages/first_look_project.webp" width=850>|
+  |_Let's take a look at our first project!_|
+
+</p>
+
+As you can see our project is running at `http://127.0.0.1:8000/` <br>
+Now the installation has now been successfully completed!
+
+> Note: Remember that when executing the command you can change the port on which our project will be executed.
+  
 # Connect with me
 
 <p align="center">
