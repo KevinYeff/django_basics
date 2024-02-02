@@ -73,7 +73,36 @@ As you can see our project is running at `http://127.0.0.1:8000/` <br>
 Now the installation has now been successfully completed!
 
 > Note: Remember that when executing the command you can change the port on which our project will be executed.
-  
+
+# Project structure
+
+After executing the command to start a project with Django you will see a series of new files have appeared these (already seen previously), let's make a brief tour of these initial files.
+
+- <span style="color:red;">`manage.py`</span>: This file is a script used to manage your Django project. This script can be used to build applications, create databases, run tests and much more.<br>
+  For example the command we use to run our application or create the development environment: 
+  ```bash
+  (venv) nivek@YEFF:~/django_basics$ python3 manage.py runserver
+  ```
+  You can see this and other commands by executing the following command:
+  ```bash
+  (venv) nivek@YEFF:~/django_basics$ python3 manage.py --help
+  ```
+  <p align="center">
+
+  |<img src="./utils/readmeImages/manage_help_cmd.webp">|
+  |:---:|
+  </p>
+  Great, isn't it?
+
+<p align="center">
+
+|<img src="./utils/readmeImages/flowcharts/django_start_project_flowchart.png" width=850>|
+|:---:|
+</p>
+
+
+
+
 # Connect with me
 
 <p align="center">
@@ -88,3 +117,4 @@ Now the installation has now been successfully completed!
 <a href="https://github.com/KevinYeff" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="https://www.github.com/KevinYeff" height="30" width="40" /></a>
 
 </p>
+
