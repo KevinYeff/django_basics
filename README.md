@@ -89,21 +89,42 @@ After executing the command to start a project with Django you will see a series
   ```
   <p align="center">
 
-  |<img src="./utils/readmeImages/manage_help_cmd.webp">|
+  |<img src="./utils/readmeImages/manage_help_cmd.webp" width=400>|
   |:---:|
   </p>
   Great, isn't it?
 
+- <span style="color:red;">`db.sqlite3`</span>: It is a SQLite database that is created by default when executing the `django-admin startproject` command,
+  it is used to store the data of your Django project and if necessary it can be changed to another database.
+
+### Inside /my_project
+
+- <span style="color:red;">`__init__.py`</span>: This is a special file that tells Python that this folder is a Python package. 
+  A Python package is a collection of Python files that can be imported as a whole.
+
+- <span style="color:red;">`asgi.py, wsgi.py`</span>: Both ASGI and WSGI are server interfaces that allow serving and running web 
+  applications created with Django since these modules are better at performing this task while Django takes care of the application logic.
+
+- <span style="color:red;">`settings.py`</span>: Roughly speaking, this file will contain the information and global configuration of the project, 
+  this configuration includes things like database, secret keys, templates, password validation, the path to the folder where our static files 
+  will be located, etc.
+
+- <span style="color:red;">`urls.py`</span>: The urls.py file is one of the most important configuration files in a Django project. 
+  It is responsible for mapping the application's URLs or paths to the views that handle incoming requests, it also allows the separation 
+  between routing logic and views, keeping all URL routing centralized in one place.
+
+### Flowchart
+
 <p align="center">
 
-|<img src="./utils/readmeImages/flowcharts/django_start_project_flowchart.png" width=850>|
+|<img src="./utils/readmeImages/flowcharts/django_start_project_flowchart.png" width=750>|
 |:---:|
 </p>
 
 
 
 
-# Connect with me
+# Contact
 
 <p align="center">
   <img src="https://avatars.githubusercontent.com/u/105649198?v=4" width=135>
