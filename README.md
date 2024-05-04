@@ -48,6 +48,8 @@ Now in the root of your project you will have the following files:
 
 </p>
 
+> **_NOTE:** Remember that a project in Django is a high-level container, which hosts one or more applications, it also contains all the directories and files necessary for the application(s) to function properly
+
 ## Launch your project
 
 To start your project we must take into account the file <span style="color:red;">`manage.py`</span>, this file is a script that is used to manage your Django project, this script can be used to create applications, create databases, run tests and much more.<br>
@@ -121,6 +123,21 @@ After executing the command to start a project with Django you will see a series
 |:---:|
 </p>
 
+# How to create an App with Django
+
+In order to create an app we need to execute the following command:
+
+```bash
+venvnivek@YEFF:~/django_basics$ python3 manage.py startapp my_app
+```
+
+### Inside /my_app
+- `_init_.py`: As the previous explanation it is a especial file that tells to Python that this folder is a Python package.
+- `my_app/migrations`: It plays a fundamental role in Django's migration system, facilitating secure and controlled changes to the database, These changes are made automatically when we apply changes to the models of our application, thus allowing them to be synchronized.
+- `admin.py`: Ths file allows us to register models in to the damin panel, giving you a graphical interface to manage app's data efficiently, the admin panel offers basic CRUD functionality as well as costomization options to tailor the admin experience to our specific needs.
+- `apps.py`: A configuration file equivalent to `settings.py` from the project.
+- `models.py`: This file is used to create classes that will later be converted into SQL tables, te important thing here is that Django will take care of that transition and will also do it when changes are made into the models, to achieve this Django will create migration files these will be reflected in the `my_app/migrations` folder.
+- `views.py`: This file contains python functions that takes http requests and returns http response, like HTML documents.
 
 
 
