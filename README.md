@@ -333,6 +333,34 @@ Running migrations:
 </p>
 
 
+## How to add more models/tables to the database?
+
+To do this, we can use the same `models.py` file, if what we want is to create
+more rows we have to locate the model and add more attributes that correspond
+to data and if what we want is to create more tables, we need to create a new
+model i.e. another class in th same file, let's create another model:
+
+In `my_app/models.py`:
+```py
+class Task(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    # defines relationship, deletes related data
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+```
+Here, we have just defined a new model that is also related to the previous
+table, now it is time to apply the migrations.
+
+<p align="center">
+
+  <img src="./utils/readmeImages/New_model_to_SQLite_table.png" width=350>
+  <br>
+  This is the resulting database after migrations.
+</p>
+
+
+
+
 # Contact
 
 <p align="center">
