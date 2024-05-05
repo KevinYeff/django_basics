@@ -233,6 +233,43 @@ urlpatterns = [
 ```
 
 
+# Django - SQLite
+
+In this section we will learn how to interact with the SQLiite database, as
+well as the creation of tables from the models and their defalt tables.
+
+In order to have access to the tables that come by default in Django we have
+to execute the following commands:
+
+```bash
+venvnivek@YEFF:~/django_basics$ python3 manage.py makemigrations
+```
+```bash
+venvnivek@YEFF:~/django_basics$ python3 manage.py migrate
+```
+
+Once these commands have been executed, we can see that our SQLite database
+file now conains tables with differently composed structures.
+
+certainly, we can't observe the content of the database file, so I recommend
+to use a vscode extension called SQLite by alexcvzz.
+
+Now from the vscode command palette or by pressing F1, we can access the SQLite
+explorer, allowing us to have a view of its content.
+
+<p>
+
+  | <img src="./utils/readmeImages/SQLite_command_palette.png" width=382> | <img src="./utils/readmeImages/SQLite_explorer.png"> |
+  |:---:|:---:|
+
+</p>
+
+Go ahead and take a look at your database file with the explorer.
+
+<p align="center">
+  <img src="./utils/readmeImages/SQLite_explorer_database.png" width=450>
+</p>
+
 # Contact
 
 <p align="center">
