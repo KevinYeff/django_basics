@@ -270,6 +270,69 @@ Go ahead and take a look at your database file with the explorer.
   <img src="./utils/readmeImages/SQLite_explorer_database.png" width=450>
 </p>
 
+## How to create our own tables?
+
+Well we have already learned to use or interact with the tables that come with
+Django by default, it is true that these tables are a nice help.
+Naturally the project will advance and the possibility of generatig more tables
+for different types of categories will become a reality, so in order to create 
+our own tables, what we must take into account are the `models.py` of our app
+and the `settings.py` of our project.
+
+The first of these files will be used to create models, these will be the 
+representation of the tables for the database and the second file will be used
+to connect the application models with the project and thus be able to carry
+out the migrations satisfactorily
+
+Create the model in `my_app/models.py`
+```py
+from django.db import models
+
+# Create your models here.
+class Project(models.Model):
+  name = models.CharField(max_length=200)
+```
+
+Connect the model in `my_project/settings.py`
+```py
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'my_app'
+]
+```
+Once we have created and configured the model to represent tables in the
+database, we have to run the migrations, this procedure will allow us to
+see the able created within the database.
+
+We can also specify the migrations we want to do, that is, which application
+we want to do the migrations for.
+
+```bash
+venvnivek@YEFF:~/django_basics$ python3 manage.py makemigrations my_app
+Migrations for 'my_app':
+  my_app/migrations/0001_initial.py
+    - Create model Project
+venvnivek@YEFF:~/django_basics$ python3 manage.py migrate my_app
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, my_app, sessions
+Running migrations:
+  Applying my_app.0001_initial... OK
+```
+
+<p align="center">
+
+  <img src="./utils/readmeImages/First_model_to_SQLite_table.png" width=350>
+
+</p>
+
+
 # Contact
 
 <p align="center">
