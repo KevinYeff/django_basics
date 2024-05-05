@@ -196,6 +196,43 @@ I --> J[Client receives response]
 J --> K{Browser shows response}
 ```
 
+### Reorganizing
+
+Well, we have already learned o create our responses, at least in a basic way,
+now we have to think about possibly having more applications within the 
+project, which would make the list of routes very extensive, to avoid that,
+we have to reorganize the views and we can do this within our app's own folder,
+in fact this is what Django suggests, make the applications contain their own 
+urls to simply import them and bring all the views.
+
+In order to do this we need to also import the `include` method, this method
+allows us to include routes from another url module, maing reorganization
+possible and easy.
+
+
+`my_project/urls.py`
+```py
+from django.contrib import admin
+from django.urls import path, include
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('my_app.urls'))
+]
+```
+`my_app/urls.py`
+```py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.hello),
+    path('about/', views.about),
+]
+```
+
+
 # Contact
 
 <p align="center">
