@@ -12,3 +12,9 @@ class Project(models.Model):
     table.
     """
     name = models.CharField(max_length=200)
+    
+class Task(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    # defines relationship, deletes related data
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
