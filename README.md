@@ -139,7 +139,62 @@ venvnivek@YEFF:~/django_basics$ python3 manage.py startapp my_app
 - `models.py`: This file is used to create classes that will later be converted into SQL tables, te important thing here is that Django will take care of that transition and will also do it when changes are made into the models, to achieve this Django will create migration files these will be reflected in the `my_app/migrations` folder.
 - `views.py`: This file contains python functions that takes http requests and returns http response, like HTML documents.
 
+## Your first Hello World! with Django
 
+In order to perform this famous function but using Django, we must ake into
+account the following fies from both the application and the project,
+`views.py` y `urls.py` respectively.
+
+<p align="center">
+
+  |<img src="./utils/readmeImages/views_and_urls.png" width=200>|
+  |:-:|
+
+</p>
+
+Now in the `views.py` file we can add methods using the request object, this
+object is an indispensable tool for creating dynamic and functional views in
+Django, it allow us to access to the information about the request, customize
+our response, and make decisions about he view logic.
+Don't forget to import and use the HttpResponse object since this will be
+responsible for loading the appropiate view for the request.
+
+```py
+from django.http import HttpResponse
+
+def hello(request):
+    return HttpResponse("<h1>Hello World!</h1>")
+```
+Wwll now that we have created the method and so that it can be sent as a
+response to a client request we must, import the method and assing it to a
+route in the file `urls.py`, for this example it will be the default or main
+route "".
+
+```py
+from my_app import views
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.hello),
+    path('about/', views.about)
+]
+```
+### Hello World flowchart
+
+```mermaid
+graph TD
+A[Client requests primary route] --> B{Server receives request}
+B --> C{Server identifies the route}
+C --> D[Matches '/']
+D --> E{Invokes view 'hello'}
+E --> F{Receive 'request' object}
+F --> G{Process the request}
+G --> H{Generate HTTP response}
+H --> I{Send response to client}
+I --> J[Client receives response]
+J --> K{Browser shows response}
+```
 
 # Contact
 
