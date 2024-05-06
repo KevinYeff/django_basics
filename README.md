@@ -418,6 +418,13 @@ Third form, directly from terminal:
 venvnivek@YEFF:~/django_basics$ cat <script> | python3 manage.py shell
 ```
 
+<p align="center">
+
+  |<img src="./utils/readmeImages/Projects_tables.png">|<img src="./utils/readmeImages/Tasks_for_projects.png" width=700>|
+  |:---:|:---:|
+
+</p>
+
 # Contact
 
 <p align="center">
