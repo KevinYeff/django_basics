@@ -359,7 +359,60 @@ table, now it is time to apply the migrations.
 </p>
 
 
+## Interacting through the Django shell
+In order to be able to interact with the tables, we can use the Django Shell,
+just execute the following commnad:
 
+```bash
+venvnivek@YEFF:~/django_basics$ python3 manage.py shell
+Python 3.10.9 (main, Jan 25 2024, 13:10:49) [GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> # import the model
+>>> from my_app.models import Project, Task
+>>> # Instance, create the table
+>>> project = Project(name="web app")
+>>> # verify if the table exists
+>>> project
+<Project: Project object (None)>
+>>> # Save the project instance to the database
+>>> project.save()
+>>> # assign tasks to projects
+>>> project.task_set.create(title="Download android IDE" # description can be assigned here)
+<Task: Task object (1)>
+>>> project.task_set.create(title="Download vscode")
+<Task: Task object (2)>
+>>> # lists tasks
+>>> project.task_set.all()
+<QuerySet [<Task: Task object (1)>, <Task: Task object (2)>]>
+>>> # get task by id
+>>> project.task_set.get(id=1)
+<Task: Task object (1)>
+```
+
+But this is somewhat tedious since every time we enter the shell, we are going
+to have to import the models, assign variables over and over again, that's why
+I recommend creating a script and running it from the terminal or using it as
+input for the Django shell, the script will also be convenient since we can
+have it as a kind of registry.
+
+First form, running the script inside Django's shell:
+```bash
+venvnivek@YEFF:~/django_basics$ python3 manage.py shell
+Python 3.10.9 (main, Jan 25 2024, 13:10:49) [GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> exec(open('<script>').read())
+
+```
+Second form, script as input:
+```bash
+venvnivek@YEFF:~/django_basics$ python3 manage.py shell < <script>
+```
+Third form, directly from terminal:
+```bash
+venvnivek@YEFF:~/django_basics$ cat <script> | python3 manage.py shell
+```
 
 # Contact
 
