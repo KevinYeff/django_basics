@@ -370,23 +370,27 @@ Type "help", "copyright", "credits" or "license" for more information.
 (InteractiveConsole)
 >>> # import the model
 >>> from my_app.models import Project, Task
->>> # Instance, create the table
->>> project = Project(name="web app")
->>> # verify if the table exists
->>> project
-<Project: Project object (None)>
+>>> p1 = Project(name="movil app")
+>>> p2 = Project(name="web app")
 >>> # Save the project instance to the database
->>> project.save()
+>>> p1.save()
+>>> p2.save()
+>>> # Get the projects
+>>> project1 = Project.objects.get(id=1)
+>>> project2 = Project.objects.get(id=2)
+>>> # verify if the table exists
+>>> project1
+<Project: Project object (1)>
 >>> # assign tasks to projects
->>> project.task_set.create(title="Download android IDE" # description can be assigned here)
+>>> project1.task_set.create(title="Download android IDE" # description can be assigned here)
 <Task: Task object (1)>
->>> project.task_set.create(title="Download vscode")
+>>> project2.task_set.create(title="Download vscode")
 <Task: Task object (2)>
 >>> # lists tasks
->>> project.task_set.all()
-<QuerySet [<Task: Task object (1)>, <Task: Task object (2)>]>
->>> # get task by id
->>> project.task_set.get(id=1)
+>>> project1.task_set.all()
+<QuerySet [<Task: Task object (1)>]>
+>>> # get task by id for project1
+>>> project1.task_set.get(id=1)
 <Task: Task object (1)>
 ```
 
