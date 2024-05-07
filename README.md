@@ -296,7 +296,7 @@ class Project(models.Model):
 Connect the model in `my_project/settings.py`
 ```py
 # Application definition
-
+venvnivekyeff@nivekyeff-ThinkPad-T480:~/proyectos/django_basicspython3 manage.py migrate
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -424,6 +424,110 @@ venvnivek@YEFF:~/django_basics$ cat <script> | python3 manage.py shell
   |:---:|:---:|
 
 </p>
+
+# Consuming API for CRUD Operations on Database (Client's side (kinda :p))
+Before continuing this section I want to remind you of the relationship between
+the files models.py, views.py, urls.py and settings.py, we must, these files
+are important for the correct development of our database, in them we can
+define routes , views, models and their corresponding assignment to the main
+project through configuration.
+
+Now we have to implement an API to perform CRUD (Create, Read, Update, Delete)
+operations on a database. The main view of this API is the projects function,
+which is responsible for handling requests related to projects stored in the
+database.
+
+This first approach to the development of the API will be based on the
+assignment of tasks for projects, that is, we will store data about projects
+and assignment of tasks to carry out the project. This approach will be the
+base structure of our API.
+
+Let's get started!
+
+The first thing we will do is, to return a good message through a request to
+the database.
+
+To do this, we will start with a fresh database, you can eliminate the database
+that has surely been filled by the steps previous to this section, taking this
+into account we will know that our database will be empty, in fact it does not
+exist, to bring it back Back we must execute the migration commands to be able
+to have the models that come by default with Django.
+
+So, let's run them!
+```bash
+venvnivekyeff@nivekyeff-ThinkPad-T480:~/proyectos/django_basicspython3 manage.py makemigrations
+...
+venvnivekyeff@nivekyeff-ThinkPad-T480:~/proyectos/django_basicspython3 manage.py migrate
+....
+```
+See? our database file is back, now the previous recomendation comes in handy
+we are going to use the SQLite extension again to get a nice preview.
+
+Well let's start by creating a new view, we must take into account the base of
+our project, the view will serve to define a method which will send a response
+back to the client, to achieve this the client will send a request to obtain
+the existing projects in the database.
+
+In the first instance, the projects table does not exist, so let's handle that so that we can send a message in response to the client request
+
+Our app's `views.py`:
+
+```py
+from django.http import HttpResponse, JsonResponse
+from .models import Project
+from django.db import DatabaseError
+from django.core.exceptions import ObjectDoesNotExist
+
+def projects(request):
+  # identify the request
+  if request.method == 'GET':
+    try:
+      # convert the objects to dict and then make a list of dictionaries
+      p = list(Project.objects.values())
+      # if there is no projects return a message
+      if not p:
+        return HttpResponse("First look, Project's table doesn't exists", status=204)
+      # if project's table exists return a json representation
+      return JsonResponse(p, safe=False)
+    # manage the exceptions
+    except DatabaseError as e:
+      return JsonResponse({'error': 'Database error: ' + str(e)}, status=500)
+    except ObjectDoesNotExist:
+      return JsonResponse({'error': 'No projects found'}, status=404)
+    except Exception as e:
+      return JsonResponse({'error': str(e)}, status=500)
+  # request is not GET
+  else:
+    return JsonResponse({'error': 'Method not allowed, GET request only'},
+                        status=405)
+```
+Let's add an endpoint for this method in the `urls.py`:
+
+```py
+urlpatterns = [
+    path('', views.hello),
+    path('about/', views.about),
+    path('projects/', views.projects) # here it is
+]
+```
+go ahead and try to send a request you can use either postman or REST Client
+extensions.
+
+```json
+HTTP/1.1 204 No Content
+Date: Tue, 07 May 2024 19:23:37 GMT
+Server: WSGIServer/0.2 CPython/3.10.9
+Content-Type: application/json
+X-Frame-Options: DENY
+Content-Length: 44
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+{
+  "message": "First look, DataBase is empty"
+}
+```
 
 # Contact
 
