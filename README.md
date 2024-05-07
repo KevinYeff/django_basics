@@ -513,7 +513,7 @@ urlpatterns = [
 go ahead and try to send a request you can use either postman or REST Client
 extensions.
 
-```json
+```
 HTTP/1.1 204 No Content
 Date: Tue, 07 May 2024 19:23:37 GMT
 Server: WSGIServer/0.2 CPython/3.10.9
